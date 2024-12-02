@@ -8,24 +8,20 @@ struct ListNode {
     ListNode(int value, ListNode* next) : value(value), next(next) { }
 };
 
-ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-    ListNode* dummy = new ListNode(0);
-    ListNode* current = dummy;
+ListNode* removeDuplicates(ListNode* head) {
+    if(!head || !head) return head;
 
-    while(list1 && list2) {
-        if(list1->value < list2->value) {
-            current->next = list1;
-            list1 = list1->next;
-        } else {
-            current->next = list2;
-            list2 = list2->next;
+    ListNode* dummy = new ListNode(0);
+    dummy->next = head;
+
+    ListNode* current = head;
+    while(current && current->next) {
+        if(current->value == current->next->value) {
+            ListNode* toBeDeleted = current->next;
+            current->next = toBeDeleted->next;
+            delete toBeDeleted;
         }
         current = current->next;
-    }
-    if(list1) {
-        current->next = list1;
-    } else if(list2) {
-        current->next = list2;
     }
     return dummy->next;
 }
@@ -48,21 +44,26 @@ void deallocate(ListNode* head) {
 }
 
 int main() {
-
     ListNode* list1 = new ListNode(1);
-    list1->next = new ListNode(2);
-    list1->next->next = new ListNode(4);
+    list1->next = new ListNode(1);
+    list1->next->next = new ListNode(2);
+
+    ListNode* newList1 = removeDuplicates(list1);
+    printList(newList1);
 
     ListNode* list2 = new ListNode(1);
-    list2->next = new ListNode(3);
-    list2->next->next = new ListNode(4);
+    list2->next = new ListNode(1);
+    list2->next->next = new ListNode(2);
+    list2->next->next->next = new ListNode(3);
+    list2->next->next->next->next = new ListNode(3);
 
-    ListNode* mergeList = mergeTwoLists(list1, list2);
-    printList(mergeList);
+    ListNode* newList2 = removeDuplicates(list2);
+    printList(newList2);
 
     deallocate(list1);
+    deallocate(newList1);
     deallocate(list2);
-    deallocate(mergeList);
+    deallocate(newList2);
 
     return 0;
 }
