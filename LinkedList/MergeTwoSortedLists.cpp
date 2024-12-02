@@ -27,6 +27,7 @@ ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
     } else if(list2) {
         current->next = list2;
     }
+    
     return dummy->next;
 }
 
