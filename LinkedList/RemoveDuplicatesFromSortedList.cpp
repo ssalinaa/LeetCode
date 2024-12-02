@@ -23,6 +23,7 @@ ListNode* removeDuplicates(ListNode* head) {
         }
         current = current->next;
     }
+    
     return dummy->next;
 }
 
