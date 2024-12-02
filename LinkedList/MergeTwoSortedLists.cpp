@@ -47,6 +47,7 @@ void deallocate(ListNode* head) {
 }
 
 int main() {
+    
     ListNode* list1 = new ListNode(1);
     list1->next = new ListNode(2);
     list1->next->next = new ListNode(4);
