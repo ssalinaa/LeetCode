@@ -57,12 +57,12 @@ int main() {
     list2->next = new ListNode(3);
     list2->next->next = new ListNode(4);
 
-    ListNode* mergeList = mergeTwoLists(list1, list2);
-    printList(mergeList);
+    ListNode* mergedLists = mergeTwoLists(list1, list2);
+    printList(mergedLists);
 
     deallocate(list1);
     deallocate(list2);
-    deallocate(mergeList);
+    deallocate(mergedLists);
 
     return 0;
 }
