@@ -10,14 +10,10 @@ struct Node {
     }
 };
 
-int findLength(Node* head) {
-    int length = 0;
-    Node* current = head;
-    while(current) {
-        length++;
-        current = current->next;
-    }
-    return length;
+int findLengthRecursive(Node* head) {
+    if(!head) return 0;
+
+    return 1 + findLengthRecursive(head->next);
 }
 
 int main() {
@@ -27,7 +23,7 @@ int main() {
     head1->next->next = new Node(1);
     head1->next->next->next = new Node(2);
     head1->next->next->next->next = new Node(1);
-    std::cout << "Count of nodes is: " << findLength(head1) << std::endl;
+    std::cout << "Count of nodes is: " << findLengthRecursive(head1) << std::endl;
 
     Node* head2 = new Node(2);
     head2->next = new Node(4);
@@ -36,7 +32,7 @@ int main() {
     head2->next->next->next->next = new Node(5);
     head2->next->next->next->next->next = new Node(3);
     head2->next->next->next->next->next->next = new Node(6);
-    std::cout << "Count of nodes is: " << findLength(head2) << std::endl;
+    std::cout << "Count of nodes is: " << findLengthRecursive(head2) << std::endl;
 
     return 0;
 }
