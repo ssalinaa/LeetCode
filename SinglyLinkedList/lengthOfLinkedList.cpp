@@ -37,6 +37,7 @@ int main() {
     head2->next->next->next->next->next = new Node(3);
     head2->next->next->next->next->next->next = new Node(6);
     std::cout << "Count of nodes is: " << findLength(head2) << std::endl;
-
+    std::cout << std::endl;
+    
     return 0;
 }
